@@ -1,0 +1,56 @@
+﻿@*@model IEnumerable<WEB_NETCORE_SACHS.Models.Sach>*@
+@model List<Sach>
+
+@{
+	ViewData["Title"] = "SachTheoChuDe";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+	@foreach (var p in Model)
+	{
+		<div class="a" style="margin:40px 40px 40px 40px">
+
+			<div class="b">
+
+				<div class="c"><img style="height:179px;width:149px" src="~/HinhAnhSP/@p.AnhBia " /></div>
+			</div>
+
+
+			@if (p.TenSach.Length < 28)
+			{
+				<div style="width:150%;height:40px;">
+					<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach" style="float: left;text-decoration: none;text-align:left"><strong>@p.TenSach</strong></a>
+				</div>
+
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach">
+					<div class="button" style="text-decoration: none;float:left"> Mua Hàng</div>
+				</a>
+			}
+			else
+			{
+				<div style="width:150%;height:40px">
+					<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach" style="text-decoration: none;float:left;text-align:left"><strong>@p.TenSach.Substring(0, 28)..</strong></a>
+				</div>
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a href="@Url.Action("ThemVaoGiohang","GioHang", new {@masach=@p.MaSach})">
+					<div class="button" style="text-decoration: none;float:left">Mua Hàng</div>
+				</a>
+			}
+		</div>
+
+	}
+
+
+</div>

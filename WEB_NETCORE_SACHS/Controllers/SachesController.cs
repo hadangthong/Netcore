@@ -42,6 +42,20 @@ namespace WEB_NETCORE_SACHS.Controllers
 
             return View(sach);
         }
+        public async Task<IActionResult> SachTheoChuDe(int? MaChuDe=0)
+        {
+            if(MaChuDe==null)
+            {
+                return NotFound();
+            }
+            List<Sach> Sach= await _context.Saches.Where(n => n.MaChuDe == MaChuDe).ToListAsync();
+              
+            if (Sach==null)
+            {
+                return NotFound();
+            }
+            return View(Sach);
+        }
         public async Task<IActionResult>ChiTiet(int? MaSach)
         {
             if (MaSach == null)

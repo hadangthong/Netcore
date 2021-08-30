@@ -21,7 +21,7 @@ namespace WEB_NETCORE_SACHS.Controllers
         // GET: ChiTietDonHangs
         public async Task<IActionResult> Index()
         {
-            var quanLyBanSachContext = _context.ChiTietDonHangs.Include(c => c.MaSachs);
+            var quanLyBanSachContext = _context.ChiTietDonHangs.Include(c => c.Sach);
             return View(await quanLyBanSachContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace WEB_NETCORE_SACHS.Controllers
             }
 
             var chiTietDonHang = await _context.ChiTietDonHangs
-                .Include(c => c.MaSachs)
+                .Include(c => c.Sach)
                 .FirstOrDefaultAsync(m => m.MaDonHang == id);
             if (chiTietDonHang == null)
             {
@@ -130,7 +130,7 @@ namespace WEB_NETCORE_SACHS.Controllers
             }
 
             var chiTietDonHang = await _context.ChiTietDonHangs
-                .Include(c => c.MaSachs)
+                .Include(c => c.Sach)
                 .FirstOrDefaultAsync(m => m.MaDonHang == id);
             if (chiTietDonHang == null)
             {
