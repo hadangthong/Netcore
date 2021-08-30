@@ -13,5 +13,6 @@ namespace WEB_NETCORE_SACHS.Models
         public string MatKhau { get; set; }
         public string Email { get; set; }
         public string DiaChi { get; set; }
+        
     }
 }

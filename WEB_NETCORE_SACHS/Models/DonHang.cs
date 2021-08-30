@@ -14,5 +14,6 @@ namespace WEB_NETCORE_SACHS.Models
         public string TtgiaoHang { get; set; }
         public int MaKh { get; set; }
         public decimal? TongTien { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }
