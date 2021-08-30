@@ -1,0 +1,42 @@
+﻿/*.hoverimage{
+     width:130px;
+     height:110px;
+     border: 1px solid white;
+     margin:5px auto;
+     text-align:center;
+     border-radius:5px;
+
+-webkit-transition-duration: 0.1s; Webkit: Thời gian phóng to, nhỏ ảnh
+-moz-transition-duration: 0.1s; Như trên
+-o-transition-duration: 0.1s; Như trên
+opacity: 0.7; Độ mờ của hình ảnh
+margin: 0 0px 0px 0; căn đều giữa ảnh
+}*/
+.hoverimage img{
+     width:160px;
+     height:160px;
+     border: 0px solid red;
+     margin:5px auto;
+     text-align:center;
+     border-radius:5px;
+     border:1px red;
+  
+-webkit-transition-duration: 0.01s; /*Webkit: Thời gian phóng to, nhỏ ảnh*/
+-moz-transition-duration: 0.01s; /*Như trên*/
+-o-transition-duration: 0.01s; /*Như trên*/
+/*opacity: 0.7; Độ mờ của hình ảnh*/
+margin: 0 0px 0px 0;
+
+}
+/*.hoverimage img:hover{
+
+-webkit-transform:scale(3); /*Webkit: Tăng kích cỡ ảnh lên 1.1 lần
+-moz-transform:scale(1);  
+-o-transform:scale(1); 
+box-shadow:0px 0px 30px gray; /*Đổ bóng bằng CSS3
+-webkit-box-shadow:0px 0px 30px gray;
+-moz-box-shadow:0px 0px 30px gray; 
+margin: 0 0px 0px 0px;
+position:absolute;
+z-index:1;
+}*/

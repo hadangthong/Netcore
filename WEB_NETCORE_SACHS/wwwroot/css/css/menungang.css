@@ -1,0 +1,24 @@
+﻿
+li {
+    list-style: none;
+}
+a{text-decoration: none;color: #FFF;font-size: 16px;}
+.menu
+{ 
+    background:repeat-x;
+     margin-top: 0px;
+     border-color:red;
+     font-family:'Times New Roman';
+}
+.menu ul li{
+     float: left;
+     padding: 11px 27px;
+      position: relative;
+       border-right: 
+           1px dotted #ACACAC;}
+.menu ul li:last-child{ border-right: none;}
+.menu ul li ul{ display: none; position: absolute; background: #00A69B;top: 41px;width: 198px; left: 0px;}
+.menu ul li:hover ul{ display: block;}
+.menu ul li:hover{ background: #5F5C5C; transition: all 0.25s;}
+.menu ul li ul li{ padding: 5px 10px;}
+.menu ul li ul li{ border-bottom: 1px dotted #ACACAC;}

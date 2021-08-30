@@ -1,0 +1,13 @@
+﻿@using WEB_NETCORE_SACHS.Models;
+@model List<NhaXuatBan>
+<link href="~/css/MenuTraicss.css" rel="stylesheet" />
+<div class="menu">
+	<ul>
+
+		@foreach (var p in Model)
+		{
+			<li> <a href="">@p.TenNxb</a></li>
+		}
+
+	</ul>
+</div>

@@ -1,0 +1,77 @@
+﻿@using WEB_NETCORE_SACHS.Models
+@model WEB_NETCORE_SACHS.Models.Sach
+@{
+	ViewData["Title"] = "ChiTiet";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	QuanLyBanSachContext ql = new QuanLyBanSachContext();
+}
+<link href="~/css/Main.css" rel="stylesheet" />
+<div style="width:100%;margin-top:0px;border:1px solid red;float:left">
+
+	<div style="width:25%; float:left">
+		<img style="width:auto;height:auto; padding:20px 10px 10px 20px" src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" />
+		<div style="height:40px;padding-left:20px">
+			<div><a style="text-decoration: none" href="@Url.Action("ThemVaoGiohang","GioHang", new {@Masach=Model.MaSach})"><input class="button" type="submit" style="cursor:pointer" value=" Mua hàng"></a></div>
+		</div>
+	</div>
+	<div style="width:73%; float:left;margin-top:20px">
+		<div class="ThongTin" style="float: left">
+
+			<div class="TenSach"><h5>Ten Sach:@Model.TenSach</h5></div>
+			<div class="ChuDe"><h5>Chủ đề:@Model.ChuDe.TenChuDe</h5></div>
+			<div class="NhaXuatBan"><h5>Nhà xuất bản:@Model.NhaXuatBan.TenNxb</h5> </div>
+			<div class="Mota" style="font-size:20px;color:rebeccapurple"><h5>Nội dung tóm tắt:<br />- @Model.MoTa <br /></h5></div>
+
+			<div class="Gia"><h2>Đơn giá:@string.Format("{0:0,0}", @Model.GiaBan) VNĐ</h2></div>
+		</div>
+	</div>
+</div>
+<div style="width:100%;height:500px;border:1px solid red;float:left">
+	@foreach (var p in ql.Saches.Where(p=>p.MaChuDe==@Model.ChuDe.MaChuDe).Skip(1).Take(5))
+	{
+		<div class="a" style="margin:40px 40px 40px 40px">
+			<a href="@Url.Action("DetailsSach","Saches", new {@masach=@p.MaSach})">
+				<div class="b">
+
+					<div class="c"><img style="height:179px;width:149px" src="~/HinhAnhSP/@p.AnhBia " /></div>
+				</div>
+
+			</a>
+			@if (p.TenSach.Length < 35)
+			{
+				<div style="width:150%;height:40px;">
+					<a href="@Url.Action("ThemSachDaxem","GioHang", new {@Masach=@p.MaSach})" style="float: left;text-decoration: none;text-align:left"><strong>@p.TenSach</strong></a>
+				</div>
+
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a href="@Url.Action("ThemVaoGiohang","GioHang", new {@Masach=@p.MaSach})">
+					<div class="button" style="text-decoration: none;float:left"> Mua Hàng</div>
+				</a>
+			}
+			else
+			{
+				<div style="width:150%;height:40px">
+					<a href="@Url.Action("ThemSachDaxem","GioHang", new {@masach=@p.MaSach})" style="text-decoration: none;float:left;text-align:left"><strong>@p.TenSach.Substring(0, 15)..</strong></a>
+				</div>
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a href="@Url.Action("ThemVaoGiohang","giohang", new {@masach=@p.MaSach})">
+					<div class="button" style="text-decoration: none;float:left">Mua Hàng</div>
+				</a>
+			}
+		</div>
+
+	}
+</div>

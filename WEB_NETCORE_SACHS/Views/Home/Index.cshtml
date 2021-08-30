@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<WEB_NETCORE_SACHS.Models.Sach>
+
+@{
+
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.mainss {
+		border: 1px solid red
+	}
+</style>
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<script src="~/js/jquery-3.3.1.min.js"></script>
+	<link href="~/css/css/Main.css" rel="stylesheet" />
+	<link href="~/css/css/bootstrap.css" rel="stylesheet" />
+	<link href="~/css/css/jquery-ui.css" rel="stylesheet" />
+	<link href="~/css/css/PagedList.css" rel="stylesheet" />
+	<script src="~/js/bootstrap.min.js"></script>
+</head>
+
+<div>
+	@foreach (var p in Model)
+	{
+		<div class="a" style="margin:40px 40px 40px 40px">
+
+			<div class="b">
+
+				<div class="c"><img style="height:179px;width:149px" src="~/HinhAnhSP/@p.AnhBia " /></div>
+			</div>
+
+
+			@if (p.TenSach.Length < 28)
+			{
+				<div style="width:150%;height:40px;">
+					<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach" style="float: left;text-decoration: none;text-align:left"><strong>@p.TenSach</strong></a>
+				</div>
+
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach">
+					<div class="button" style="text-decoration: none;float:left"> Mua Hàng</div>
+				</a>
+			}
+			else
+			{
+				<div style="width:150%;height:40px">
+					<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach" style="text-decoration: none;float:left;text-align:left"><strong>@p.TenSach.Substring(0, 28)..</strong></a>
+				</div>
+				<div style="width:150%;margin-top:0px">
+					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
+
+						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
+					</p>
+				</div>
+				<a href="@Url.Action("ThemVaoGiohang","GioHang", new {@masach=@p.MaSach})">
+					<div class="button" style="text-decoration: none;float:left">Mua Hàng</div>
+				</a>
+			}
+		</div>
+
+	}
+
+
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+{
+	<script type="text/javascript">
+	alert(@ViewBag.ThongBao);
+	</script>
+}
+<div class="container">
+	
+	@if (ViewBag.sotrang != null)
+	{
+		<nav aria-label="Page navigation example">
+		@for (int i = 1; i <= ViewBag.sotrang; i++)
+		{
+		<ul class="pagination">
+			<li class="page-item">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+		</ul>
+
+		}
+		</nav>
+	}
+</div>
+
+
+
+
