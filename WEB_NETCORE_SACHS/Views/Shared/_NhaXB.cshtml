@@ -6,7 +6,7 @@
 
 		@foreach (var p in Model)
 		{
-			<li> <a href="">@p.TenNxb</a></li>
+		<li> <a asp-controller="Saches" asp-action="SachTheoNXB" asp-route-MaNXB="@p.MaNxb">@p.TenNxb</a></li>
 		}
 
 	</ul>

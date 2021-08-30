@@ -56,6 +56,22 @@ namespace WEB_NETCORE_SACHS.Controllers
             }
             return View(Sach);
         }
+        public async Task<IActionResult>SachTheoNXB(int? MaNXB=0)
+        {
+            if(MaNXB==null)
+            {
+                return NotFound();
+            }
+            var Sach = _context.Saches.Where(m => m.MaNxb == MaNXB).ToListAsync();
+            //var Sach = await _context.Saches
+            //    .FirstOrDefaultAsync(m => m.MaNxb== MaNXB);
+           
+            if(Sach==null)
+            {
+                return NotFound();
+            }
+            return View(await Sach);
+        }
         public async Task<IActionResult>ChiTiet(int? MaSach)
         {
             if (MaSach == null)
@@ -95,8 +111,8 @@ namespace WEB_NETCORE_SACHS.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaChuDe"] = new SelectList(_context.ChuDes, "MaChuDe", "MaChuDe", sach.MaChuDe);
-            ViewData["MaNxb"] = new SelectList(_context.NhaXuatBans, "MaNxb", "MaNxb", sach.MaNxb);
+            ViewData["MaChuDe"] = new SelectList(_context.ChuDes, "MaChuDe", "TenChude", sach.MaChuDe);
+            ViewData["MaNxb"] = new SelectList(_context.NhaXuatBans, "MaNxb", "TenNxb", sach.MaNxb);
             return View(sach);
         }
 
