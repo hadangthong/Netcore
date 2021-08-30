@@ -66,7 +66,7 @@ namespace WEB_NETCORE_SACHS.Models
 
                 entity.Property(e => e.DonGia).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.MaSachs)
+                entity.HasOne(d => d.Sach)
                     .WithMany(p => p.ChiTietDonHangs)
                     .HasForeignKey(d => d.MaSach)
                     .OnDelete(DeleteBehavior.ClientSetNull)

@@ -12,7 +12,7 @@ namespace WEB_NETCORE_SACHS.Models
         public int? SoLuong { get; set; }
         public decimal? DonGia { get; set; }
 
-        public virtual Sach MaSachs { get; set; }
-        public virtual DonHang MaDonHangs { get; set; }
+        public virtual Sach Sach { get; set; }
+        public virtual DonHang DonHang { get; set; }
     }
 }
