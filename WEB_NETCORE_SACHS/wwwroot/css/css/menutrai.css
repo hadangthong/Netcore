@@ -18,7 +18,7 @@
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #e8e8e8;
-	padding: 0 1em;
+	
 }
 
 .menu li a {
@@ -27,7 +27,7 @@
 		font-weight: bold;
 		font-family:'Times New Roman';
 		display: block;
-		
+		margin-left:0.7cm;
 }
 
 .menu li:hover {

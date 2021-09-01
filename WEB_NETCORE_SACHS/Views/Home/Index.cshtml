@@ -35,7 +35,7 @@
 			@if (p.TenSach.Length < 28)
 			{
 				<div style="width:150%;height:40px;">
-					<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach" style="float: left;text-decoration: none;text-align:left"><strong>@p.TenSach</strong></a>
+					<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach" style="float: left;text-decoration: none;text-align:left"><strong>@p.TenSach</strong></a>
 				</div>
 
 				<div style="width:150%;margin-top:0px">
@@ -44,14 +44,14 @@
 						Giá: @String.Format("{0:0,0}", p.GiaBan) VNĐ
 					</p>
 				</div>
-				<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach">
+				<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach">
 					<div class="button" style="text-decoration: none;float:left"> Mua Hàng</div>
 				</a>
 			}
 			else
 			{
 				<div style="width:150%;height:40px">
-					<a asp-controller="Saches"asp-action="ChiTiet"asp-route-MaSach="@p.MaSach" style="text-decoration: none;float:left;text-align:left"><strong>@p.TenSach.Substring(0, 28)..</strong></a>
+					<a asp-controller="Saches" asp-action="ChiTiet" asp-route-MaSach="@p.MaSach" style="text-decoration: none;float:left;text-align:left"><strong>@p.TenSach.Substring(0, 28)..</strong></a>
 				</div>
 				<div style="width:150%;margin-top:0px">
 					<p style="color: blue;float: left;font-family:'Times New Roman';font-weight:bold">
@@ -76,21 +76,32 @@
 	alert(@ViewBag.ThongBao);
 	</script>
 }
-<div class="container">
+<div class="pagination" style="margin-left:20%">
 	
+	<a href="">&laquo;</a>
+	@for (int i = 1; i <= ViewBag.sotrang; i++)
+	{
+		<a asp-controller="Home" asp-action="Index" asp-route-page="@i">@i</a>
+	}
+
+
+	<a href="#">&raquo;</a>
+</div>
+@*<div class="container">
+
 	@if (ViewBag.sotrang != null)
 	{
 		<nav aria-label="Page navigation example">
-		@for (int i = 1; i <= ViewBag.sotrang; i++)
-		{
-		<ul class="pagination">
-			<li class="page-item">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
-		</ul>
+			@for (int i = 1; i <= ViewBag.sotrang; i++)
+			{
+				<ul class="pagination">
+					<li class="page-item">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+				</ul>
 
-		}
+			}
 		</nav>
 	}
-</div>
+</div>*@
 
 
 

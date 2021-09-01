@@ -1,13 +1,21 @@
 ﻿@using WEB_NETCORE_SACHS.Models;
 @model List<ChuDe>
-<link href="~/css/css/menutrai.css" rel="stylesheet" />
-<div class="menu">
+<link href="~/css/css/MeNuDoc.css" rel="stylesheet" />
+@*<link href="~/css/css/menutrai.css" rel="stylesheet" />*@
+@*<div class="menu">
 	<ul>
 
 		@foreach (var p in Model)
 		{
-			<li> <a asp-controller="Saches"asp-action="SachTheoChuDe"asp-route-MaChuDe="@p.MaChuDe">@p.TenChuDe</a></li>
+			<li> <a asp-controller="Saches" asp-action="SachTheoChuDe" asp-route-MaChuDe="@p.MaChuDe">@p.TenChuDe</a></li>
 		}
 
 	</ul>
+</div>*@
+<div class="vertical-menu">
+	<a href="#" class="active">Chủ Đề Sách</a>
+	@foreach (var p in Model)
+	{
+		<a asp-controller="Saches" asp-action="SachTheoChuDe" asp-route-MaChuDe="@p.MaChuDe">@p.TenChuDe</a>
+	}
 </div>

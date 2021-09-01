@@ -31,7 +31,7 @@ namespace WEB_NETCORE_SACHS.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-               optionsBuilder.UseSqlServer("Server=NANYA-PC;Database=QuanLyBanSach;Trusted_Connection=True;");
+               optionsBuilder.UseSqlServer("Server=ADMIN-20200518L\\SQLEXPRESS;Database=QuanLyBanSach;Trusted_Connection=True;");
             }
         }
 
